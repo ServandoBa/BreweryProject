@@ -25,10 +25,11 @@ The transformation and cleaning process was developed in PostgreSQL. Below, you 
 
 
 ### **Load**
-Once the data was prepared for the presentation, it was uploaded to Tableau to create the dashboard. There are 2 views, the Executive dashboard and the Regional dashboard. Each view has a different level of detail in order to show
+Once the data was prepared for the presentation, it was uploaded to Tableau to create the dashboard. There are 2 views, the Executive dashboard and the Regional dashboard. Each view has a different level of detail in order to show relevant metrics measuring financial and operative performance across the multiple breweries.
+
 
 ## Data Visualization
-
+https://github.com/ServandoBa/BreweryProject/assets/131488634/b37da00b-7837-4163-8918-2808b53279b5
 
 
 
