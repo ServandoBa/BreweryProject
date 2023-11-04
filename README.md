@@ -29,8 +29,11 @@ Once the data was prepared for the presentation, it was uploaded to Tableau to c
 
 
 ## Data Visualization
-https://github.com/ServandoBa/BreweryProject/assets/131488634/b37da00b-7837-4163-8918-2808b53279b5
+**Executive dashboard**
+![Dashboard - General overview](https://github.com/ServandoBa/BreweryProject/assets/131488634/748a750d-94be-4bbc-949d-6afc5be9d4e8)
 
+**Regional dashboard**
+![Dashboard - Regional Overview](https://github.com/ServandoBa/BreweryProject/assets/131488634/0ff5d9ec-2265-458d-8624-5962ebf1bb1f)
 
 
 
