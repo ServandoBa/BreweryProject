@@ -9,7 +9,10 @@ A national brewery group needs to know last year’s performance.
 
 **Datasets description**
 - Breweries - Original dataset
-![image](https://github.com/ServandoBa/BreweryProject/assets/131488634/4e20210f-ae7c-4d3b-9fed-7dfa455e388d)
+|Column | 
+|---    |
+| Brewery      |
+|       |
 
 - Brewery_data - Original dataset
 
