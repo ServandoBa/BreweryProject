@@ -1,24 +1,49 @@
 # BreweryProject
-## **Description**
+## **Business Understanding**
 
-Problem statement: A national brewery group needs to know last year’s performance. At the moment, there are just 2 Excel files with the breweries' information of the United States and it's needed to develop a dashboard in order to show the information dynamically. 
+**Context:** A national brewery group requires to visualize last year’s performance regarding financial and operational metrics in order to make decisions based on data. 
 
-Stakeholders: C-Executives, Directors and Regional Managers.
+**Assess situation:** At the moment, there are just 2 Excel files with the breweries' information. These files have general information about the facilities, therefore, it could be difficult to breakdown the information thoroughly.  
 
+**Stakeholders:** C-Executives, Directors and Regional Managers.
 
 **Tools:** 
 - Data wrangling: PostgreSQL
 - Data visualization: Tableau
 
+## **Data Understanding**
 ### **Datasets description**
-- Breweries - Original dataset
-
-
-- Brewery_data - Original dataset
-
-
-- Regional list - This dataset was retrieved from a website in order to complement the information and moving forward can display better views of the data.
+**- Breweries - Original dataset**
   
+| Column       | Data type | Description                            | Comments |
+| :---         | :---      | :---                                   | :---     |
+| Brewery_key  | Integer   | Brewery id                             | PK       |
+| Brewery_name | String    | Location name                          | - Create condensed list |
+| Type         | String    | Business_type                          |          |
+| Website      | String    | Location website                       |          |
+| Address      | String    | Location address                       | - Create zip code and city column |
+| State        | String    | State in which the location is located | - Remove unwanted strings |
+
+**- Brewery_data - Original dataset**
+
+| Column       | Data type  | Description                 | Comments |
+| :---         | :---       | :---                        | :---     |
+| Brewery_key  | Integer    | Brewery id                  | PK       |
+| Costs        | Float      | COGS (Cost of goods sold)   | 	     |
+| Sales        | Float      | Income                      |          |
+| Employees    | Integer    | Headcount                   |          |
+| Barrels      | Integer    | Number of sold barrels      |          |
+
+
+**- Regional list - _This dataset was retrieved from a website in order to complement the information and moving forward can display better views of the data._**
+
+| Column       | Data type | Description        | Comments |
+| :---         | :---      | :---               | :---     |
+| Abbreviation | String    | State abbreviation | PK       |
+| State_name   | String    | State name   	| 	   |
+| Region       | String    | Region name        |          |
+
+## Data Preparation
 
 ## **ETL process**
 
@@ -29,7 +54,7 @@ The data was retrieved from ....
 
 ### **Transform**
 
-The transformation and cleaning process was developed in PostgreSQL. Below, you will find the script used to transform the data from the Breweries data file. This transformation was carried out to obtain support columns such as Business Type, Is Active, Zip Code, State, and City in a usable format.
+The transformation and cleaning process was developed in PostgreSQL. Below, you will find the script used to transform the data from the Breweries data file. This transformation was carried out to obtain support columns such as Business Type, Zip Code, State, and City in a usable format.
 
 ```
 --Transform state column to match it with Region list later on
@@ -50,11 +75,6 @@ SELECT
 		WHEN type IN ('MultitapBar') THEN 'Multitap'
 		ELSE 'Other'
 	END business_type,
-	--Is_active categorization
-	CASE
-		WHEN type ILIKE '%Closed%' THEN 'No'
-		ELSE 'Yes'
-	END is_active,
 	website,
 	address, 
 	--Zipcode extraction
