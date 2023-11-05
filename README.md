@@ -18,7 +18,7 @@ Stakeholders: C-Executives, Directors and Regional Managers.
 
 
 - Regional list - This dataset was retrieved from a website in order to complement the information and moving forward can display better views of the data.
-  _Reference: https://www.mappr.co/political-maps/us-regions-map/_
+  
 
 ## **ETL process**
 
@@ -109,7 +109,21 @@ The following dashboard shows the company’s performance on a national level, s
 
 **Regional dashboard**
 
+
 ![Dashboard - Regional Overview](https://github.com/ServandoBa/BreweryProject/assets/131488634/0ff5d9ec-2265-458d-8624-5962ebf1bb1f)
+
+
+## **References**
+
+**Region list**
+
+_Mappr. (n.d.). 5 US Regions Map and Facts. https://www.mappr.co/political-maps/us-regions-map/_
+
+**Breweries information research**
+
+_Brewers Association. (n.d.). Craft Beer Industry Market Segments - Brewers Association. https://www.brewersassociation.org/statistics-and-data/craft-beer-industry-market-segments/_
+
+
 
 
 
