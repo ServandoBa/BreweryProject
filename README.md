@@ -1,9 +1,9 @@
 # BreweryProject
 ## **Business Understanding**
 
-**Context:** A national brewery group requires to visualize last year’s performance regarding financial and operational metrics in order to make decisions based on data. 
+**Context:** A national brewery group requires to visualize last year’s performance regarding financial and operational overview in order to make decisions based on data. 
 
-**Assess situation:** At the moment, there are just 2 Excel files with the breweries' information. These files have general information about the facilities, therefore, it could be difficult to breakdown the information thoroughly.  
+**Assess situation:** At the moment, there are just 2 Excel files with the breweries' information. These files have general information about the facilities, therefore, it could be difficult to break down the information thoroughly.  
 
 **Stakeholders:** C-Executives, Directors and Regional Managers.
 
@@ -12,9 +12,12 @@
 - Data visualization: Tableau
 
 ## **Data Understanding**
-### **Datasets description**
+
+<details>
+<Summary> Datasets description </Summary>
+	
 **- Breweries - Original dataset**
-  
+<br>  
 | Column       | Data type | Description                            | Comments |
 | :---         | :---      | :---                                   | :---     |
 | Brewery_key  | Integer   | Brewery id                             | PK       |
@@ -23,6 +26,8 @@
 | Website      | String    | Location website                       |          |
 | Address      | String    | Location address                       | - Create zip code and city column |
 | State        | String    | State in which the location is located | - Remove unwanted strings |
+
+<br>
 
 **- Brewery_data - Original dataset**
 
@@ -34,6 +39,7 @@
 | Employees    | Integer    | Headcount                   |          |
 | Barrels      | Integer    | Number of sold barrels      |          |
 
+<br>
 
 **- Regional list - _This dataset was retrieved from a website in order to complement the information and moving forward can display better views of the data._**
 
@@ -43,18 +49,63 @@
 | State_name   | String    | State name   	| 	   |
 | Region       | String    | Region name        |          |
 
+</details>
+
+<br>
+
+<details>
+
+<Summary> Metrics table </Summary>
+<br>	
+After have gone over the Excel files, below you will find the KPIs that can be put into the dashboard to show insightful operational and financial metrics.
+
+| Metric      		        | Logic 				  |
+| :---           	        | :---     	   			  |
+| Revenue        		| SUM(sales)    			  |
+| Sold barrels 			| SUM(barrels)           		  |
+| Costs      		   	| SUM(costs)       			  |
+| Breweries count      	   	| COUNT(brewery_id)       		  |
+| Gross profit      	   	| Revenue - Costs      			  |
+| Gross profit ratio  	   	| Gross profit / Revenue      		  |
+| Gross profit per barrel   	| Gross profit / Barrels      		  |
+| Breweries in Negative GP      | COUNT(brewery_id) WHERE gross_profit < 0 |
+| Expenses per employee      	| Costs / employees         		  |
+| Employees      		| SUM(employees)         		  |
+
+</details>
+	
+<br>
+
 ## Data Preparation
 
-## **ETL process**
-
-### **Extract**
-
-The data was retrieved from ....
-
+This section is the most important in the process. It is very probable that if you don't clean your data correctly, you will have garbage in your model so there will be garbage out. 
 
 ### **Transform**
 
 The transformation and cleaning process was developed in PostgreSQL. Below, you will find the script used to transform the data from the Breweries data file. This transformation was carried out to obtain support columns such as Business Type, Zip Code, State, and City in a usable format.
+
+**Business_type mapping**
+
+| Type      		   | Business_type |
+| :---           	   | :---     	   |
+| BOP-BrewOnPremise        | BOP      	   |
+| BOP-BrewOnPremise-Closed | BOP           |
+| Brewpub      		   | Brewpub       |
+| Brewpub-Closed      	   | Brewpub       |
+| ContractBrewery      	   | Contract      |
+| Contract      	   | Contract      |
+| ContractBrewery-Closed   | Contract      |
+| Microbrewery      	   | Micro         |
+| Mircobrewery      	   | Micro         |
+| Microbrewery-Closed      | Micro         |
+| MultitapBar      	   | Multitap      |
+| RegionalBrewery      	   | Regional      |
+
+
+</br>
+
+**PostgreSQL code**
+
 
 ```
 --Transform state column to match it with Region list later on
@@ -112,10 +163,9 @@ LEFT JOIN regions r ON b.state = r.state_name
 
 ```
 
-### **Load**
-
 Once the data was prepared for the presentation, it was uploaded to Tableau to create the dashboard. There are 2 views, the Executive dashboard and the Regional dashboard. Each view has a different level of detail in order to show relevant metrics measuring financial and operational performance across the multiple breweries.
 
+</br></br>
 
 ## Data Visualization
 **Comments**
